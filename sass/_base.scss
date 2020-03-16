@@ -13,3 +13,37 @@ $color-grey-dark-2: #6D5D4B;
 // FONT VARIABLES
 $font-primary: 'Nunito', sans-serif;
 $font-display: 'Josefin Sans', sans-serif;
+
+
+//This provides a nice, clean slate for design, making everything consistent across all browsers
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; //10px/16px --> 1rem = 10px
+}
+
+body {
+    font-family: $font-primary;
+    color: $color-grey-dark-2;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+.container {
+    display: grid;
+    grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+    //the 8rem is for the sidebar, the 1fr on both sides are the space on both sides of the content, and the repeated columns in the middle are the main content areas 
+    grid-template-columns: [sidebar-start]8rem [sidebar-end full-start] 1fr [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] 1fr [full-end];
+
+    & > * {
+        padding: 40px; 
+        font-size: 3rem;
+    }
+}
