@@ -1,0 +1,24 @@
+//This %heading is an extend. How it works is that the heading 1, 2, 3, 4 all extend a property called "heading" which creates it's own class that applies to them all. A mixin is different, because a mixin adds content from without, and puts it internally into the class. So, if you look at the code for these, the font-family and font-weight will not be nested within the individual headings (like it would for a mixin).
+
+%heading {
+    font-family: $font-display;
+    font-weight: 400;
+}
+
+.heading-1 {
+    @extend %heading;
+}
+.heading-2 {
+    @extend %heading;
+}
+.heading-3 {
+    @extend %heading;
+}
+.heading-4 {
+    @extend %heading;
+    font-size: 1.9rem;
+
+    &--light { color: $color-grey-light-1;}
+    
+    &--dark { color: $color-grey-dark-1;}
+}
