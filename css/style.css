@@ -75,6 +75,9 @@ body {
   background-color: #c69963;
   grid-area: 1 / sidebar-start / -1 / sidebar-end; }
 
+.nav-btn {
+  border: none; }
+
 .header {
   background-color: #54483A;
   grid-column: full-start / col-end 6; }
