@@ -1,9 +1,35 @@
 .sidebar {
     background-color: $color-primary;
     grid-area: 1 / sidebar-start / -1 / sidebar-end;
+
+    //flexbox is used to center the lines
+    display: flex;
+    justify-content: center;
 }
 
 .nav-btn {
     border: none;
-    
+    border-radius: 0;
+
+    background-color: #fff;
+    height: .2rem;
+    width: 4.5rem;
+    margin-top: 4rem;
+
+    &::before,
+    &::after {
+        content: "";
+        background-color: #fff;
+        height: .2rem;
+        width: 4.5rem; 
+        display: block;
+    }
+
+    &::before {
+        transform: translateY(-1rem);
+    }
+
+    &::after {
+        transform: translateY(1rem);
+    }
 }
