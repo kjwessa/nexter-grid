@@ -14,6 +14,14 @@ $color-grey-dark-2: #6D5D4B;
 $font-primary: 'Nunito', sans-serif;
 $font-display: 'Josefin Sans', sans-serif;
 
+//Media Query Variables
+// We use EM for media queries because it will scale properly to a users chosen font size (if not the standard 16px/1em, if they set their browser to 20px, it will still be 1em.
+
+$bp-largest: 75em;//1200px (1200px % 16 (default font size for a browser)
+$bp-large: 62.5em;//1000px
+$bp-medium: 50em;//800px
+$bp-small: 37.5em;//600px
+
 
 //This provides a nice, clean slate for design, making everything consistent across all browsers
 *,
@@ -27,6 +35,10 @@ $font-display: 'Josefin Sans', sans-serif;
 html {
     box-sizing: border-box;
     font-size: 62.5%; //10px/16px --> 1rem = 10px
+
+    @media only screen and (max-width: $bp-largest) {
+        font-size: 50%;
+    }
 }
 
 body {
@@ -41,4 +53,20 @@ body {
     grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
     //the 8rem is for the sidebar, the 1fr on both sides are the space on both sides of the content, and the repeated columns in the middle are the main content areas 
     grid-template-columns: [sidebar-start]8rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
+
+
+
+    //Responsive sidebar definition, changes also made on sidebar page
+    @media screen and (max-width: $bp-large) {
+    //the 6rem definition added to the beginning is meant for the sidebar
+    grid-template-rows: 6rem 80vh min-content 40vw repeat(3, min-content);
+    // the layout is adjusted by removing the sidebar definition from the columns, and beginning at full-start
+    grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
+    }
+
+    //Responsive definitions for the realtors
+    @media screen and (max-width: $bp-medium) {
+    //the 6rem definition added to the beginning is meant for the sidebar
+    grid-template-rows: 6rem calc(100vh - 6rem);
+    }
 }
